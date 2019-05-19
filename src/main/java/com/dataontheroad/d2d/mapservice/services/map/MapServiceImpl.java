@@ -1,8 +1,12 @@
 package com.dataontheroad.d2d.mapservice.services.map;
 
 import com.dataontheroad.d2d.mapservice.queryservice.MapDataService;
+import com.dataontheroad.d2d.mapservice.restcomponents.message.MapMessage;
+import com.dataontheroad.d2d.mapservice.restcomponents.message.PostRequest.RadialMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MapServiceImpl implements MapService{
@@ -18,5 +22,10 @@ public class MapServiceImpl implements MapService{
     @Override
     public MapBean getElementById(int i) {
         return mapDataService.getElementById(i);
+    }
+
+    @Override
+    public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage) {
+        return mapDataService.getElementsByPositionAndDistance(radialMessage);
     }
 }

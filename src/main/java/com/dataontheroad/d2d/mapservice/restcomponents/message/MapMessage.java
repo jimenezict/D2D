@@ -1,7 +1,6 @@
 package com.dataontheroad.d2d.mapservice.restcomponents.message;
 
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
-import com.dataontheroad.d2d.mapservice.services.statistics.StatisticsBean;
 
 import java.util.List;
 
