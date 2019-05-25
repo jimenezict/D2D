@@ -1,4 +1,4 @@
-package com.dataontheroad.d2d.mapservice.restcomponents.message.PostRequest;
+package com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest;
 
 public class Position {
     private double x_cord;

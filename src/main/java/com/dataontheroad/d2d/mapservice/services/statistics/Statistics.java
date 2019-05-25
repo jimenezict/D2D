@@ -1,6 +1,6 @@
 package com.dataontheroad.d2d.mapservice.services.statistics;
 
-import com.dataontheroad.d2d.mapservice.queryservice.StatisticsDataService;
+import com.dataontheroad.d2d.mapservice.repository.StatisticsDataService;
 import org.springframework.stereotype.Service;
 
 @Service

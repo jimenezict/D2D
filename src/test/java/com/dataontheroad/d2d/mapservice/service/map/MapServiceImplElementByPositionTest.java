@@ -1,8 +1,8 @@
-package com.dataontheroad.d2d.mapservice;
+package com.dataontheroad.d2d.mapservice.service.map;
 
-import com.dataontheroad.d2d.mapservice.queryservice.MapDataService;
-import com.dataontheroad.d2d.mapservice.restcomponents.message.PostRequest.Position;
-import com.dataontheroad.d2d.mapservice.restcomponents.message.PostRequest.RadialMessage;
+import com.dataontheroad.d2d.mapservice.repository.MapDataService;
+import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.Position;
+import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.RadialMessage;
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
 import com.dataontheroad.d2d.mapservice.services.map.MapService;
 import org.junit.Before;

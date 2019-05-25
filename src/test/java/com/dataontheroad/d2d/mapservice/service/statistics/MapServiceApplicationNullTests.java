@@ -1,7 +1,7 @@
-package com.dataontheroad.d2d.mapservice;
+package com.dataontheroad.d2d.mapservice.service.statistics;
 
-import com.dataontheroad.d2d.mapservice.queryservice.StatisticsDataService;
-import com.dataontheroad.d2d.mapservice.restcomponents.message.StatisticsMessage;
+import com.dataontheroad.d2d.mapservice.repository.StatisticsDataService;
+import com.dataontheroad.d2d.mapservice.restcontroller.message.StatisticsMessage;
 import com.dataontheroad.d2d.mapservice.services.statistics.Statistics;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
@@ -19,12 +18,10 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MapserviceApplicationNullTests {
+public class MapServiceApplicationNullTests {
 
 	@Autowired
 	Statistics statistics;
-
-	private TestRestTemplate testRestTemplate;
 
 	@Mock
 	StatisticsDataService statisticsDataService;
@@ -36,8 +33,6 @@ public class MapserviceApplicationNullTests {
 
 		when(statisticsDataService.getStatistics()).thenReturn(null);
 		statistics.setStatisticsDataService(statisticsDataService);
-
-		testRestTemplate = new TestRestTemplate();
 	}
 
 	@Test

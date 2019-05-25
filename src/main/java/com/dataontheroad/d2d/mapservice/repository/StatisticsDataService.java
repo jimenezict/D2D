@@ -1,4 +1,4 @@
-package com.dataontheroad.d2d.mapservice.queryservice;
+package com.dataontheroad.d2d.mapservice.repository;
 
 import com.dataontheroad.d2d.mapservice.services.statistics.StatisticsBean;
 import org.springframework.stereotype.Service;
@@ -7,5 +7,11 @@ import org.springframework.stereotype.Service;
 public interface StatisticsDataService {
 
     StatisticsBean getStatistics();
+
+    public void newStatistics(StatisticsBean statitsticsBean);
+
+    public long countStatistics();
+
+    public void emptyStatistics();
 
 }

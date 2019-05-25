@@ -1,6 +1,4 @@
-package com.dataontheroad.d2d.mapservice.restcomponents.message.PostRequest;
-
-import com.dataontheroad.d2d.mapservice.restcomponents.message.Message;
+package com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest;
 
 public class RadialMessage{
 

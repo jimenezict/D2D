@@ -1,7 +1,7 @@
 package com.dataontheroad.d2d.mapservice.services.map;
 
-import com.dataontheroad.d2d.mapservice.queryservice.MapDataService;
-import com.dataontheroad.d2d.mapservice.restcomponents.message.PostRequest.RadialMessage;
+import com.dataontheroad.d2d.mapservice.repository.MapDataService;
+import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.RadialMessage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

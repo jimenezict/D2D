@@ -1,8 +1,8 @@
-package com.dataontheroad.d2d.mapservice;
+package com.dataontheroad.d2d.mapservice.service.map;
 
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
 import com.dataontheroad.d2d.mapservice.services.map.MapService;
-import com.dataontheroad.d2d.mapservice.queryservice.MapDataService;
+import com.dataontheroad.d2d.mapservice.repository.MapDataService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

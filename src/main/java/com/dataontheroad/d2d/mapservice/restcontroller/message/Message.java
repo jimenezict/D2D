@@ -1,4 +1,4 @@
-package com.dataontheroad.d2d.mapservice.restcomponents.message;
+package com.dataontheroad.d2d.mapservice.restcontroller.message;
 
 import java.time.LocalDateTime;
 
