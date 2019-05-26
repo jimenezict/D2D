@@ -1,8 +1,8 @@
 package com.dataontheroad.d2d.mapservice.repository.mongodb;
 
 import com.dataontheroad.d2d.mapservice.repository.MapDataService;
-import com.dataontheroad.d2d.mapservice.repository.mongodb.services.fountain.model.FountainMongo;
-import com.dataontheroad.d2d.mapservice.repository.mongodb.services.fountain.FountainRepository;
+import com.dataontheroad.d2d.mapservice.repository.mongodb.services.mappoints.model.MapPointMongo;
+import com.dataontheroad.d2d.mapservice.repository.mongodb.services.mappoints.MapPointRepository;
 import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.Position;
 import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.RadialMessage;
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
@@ -17,17 +17,17 @@ import java.util.stream.Collectors;
 public class MapDataServiceImpl implements MapDataService {
 
     @Autowired
-    FountainRepository fountainRepository;
+    MapPointRepository fountainRepository;
 
     @Override
     public MapBean getElementById(String id) {
-        FountainMongo fountainMongo = fountainRepository.findById(id).orElse(new FountainMongo(0,0));
-        return new MapBean(fountainMongo.getPosition()[0],fountainMongo.getPosition()[1]);
+        MapPointMongo fountainMongo = fountainRepository.findById(id).orElse(new MapPointMongo(0,0));
+        return new MapBean(fountainMongo.getPosition().getX(),fountainMongo.getPosition().getY());
     }
 
     @Override
     public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage) {
-        List<FountainMongo> mapBeansList = filterOnTheCircle(radialMessage.meters,radialMessage.position);
+        List<MapPointMongo> mapBeansList = filterOnTheCircle(radialMessage.meters,radialMessage.position);
         List<MapBean> mapBeanList = mapBeansList
                 .stream()
                 .limit(radialMessage.getResults())
@@ -37,7 +37,7 @@ public class MapDataServiceImpl implements MapDataService {
         return mapBeanList;
     }
 
-    private List<FountainMongo> filterOnTheCircle(int meters, Position position) {
+    private List<MapPointMongo> filterOnTheCircle(int meters, Position position) {
         if(meters > 0){
             fountainRepository.filterByCircle(meters,position);
         }
@@ -46,7 +46,7 @@ public class MapDataServiceImpl implements MapDataService {
 
     @Override
     public ObjectId insertElement(MapBean mapBean){
-        FountainMongo fountainInserted = fountainRepository.save(new FountainMongo(mapBean.getX_cord(),mapBean.getY_cord()));
+        MapPointMongo fountainInserted = fountainRepository.save(new MapPointMongo(mapBean.getX_cord(),mapBean.getY_cord()));
         return fountainInserted.get_id();
     }
 

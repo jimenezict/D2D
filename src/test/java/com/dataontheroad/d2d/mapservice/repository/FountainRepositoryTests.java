@@ -53,7 +53,6 @@ public class FountainRepositoryTests {
 		mapDataService.insertElement(new MapBean(3,3));
 		List<MapBean> mapBeanList = mapDataService
 				.getElementsByPositionAndDistance(new RadialMessage(new Position(0,0),100000, 2));
-		mapDataService.emptyElements();
 		assertEquals(2, mapBeanList.size());
 	}
 
