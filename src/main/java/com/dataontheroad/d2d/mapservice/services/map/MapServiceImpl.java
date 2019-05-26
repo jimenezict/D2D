@@ -19,7 +19,7 @@ public class MapServiceImpl implements MapService{
     }
 
     @Override
-    public MapBean getElementById(int i) {
+    public MapBean getElementById(String i) {
         return mapDataService.getElementById(i);
     }
 

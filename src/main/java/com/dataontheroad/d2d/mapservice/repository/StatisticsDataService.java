@@ -4,14 +4,10 @@ import com.dataontheroad.d2d.mapservice.services.statistics.StatisticsBean;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface StatisticsDataService {
+public interface StatisticsDataService extends BaseDataService{
 
     StatisticsBean getStatistics();
 
-    public void newStatistics(StatisticsBean statitsticsBean);
-
-    public long countStatistics();
-
-    public void emptyStatistics();
+    public void insertElement(StatisticsBean statitsticsBean);
 
 }

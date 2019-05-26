@@ -29,20 +29,20 @@ public class MapServiceImplGetByIdTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        when(mapDataService.getElementById(0)).thenReturn(new MapBean(0,0));
-        when(mapDataService.getElementById(-1)).thenReturn(null);
+        when(mapDataService.getElementById("0")).thenReturn(new MapBean(0,0));
+        when(mapDataService.getElementById("-1")).thenReturn(null);
         mapservice.setMapDataService(mapDataService);
     }
 
     @Test
     public void getElementById() {
-        MapBean mapbean = mapservice.getElementById(0);
+        MapBean mapbean = mapservice.getElementById("0");
         assertEquals(0,mapbean.getX_cord(),0.1);
     }
 
     @Test
     public void getNullElementById() {
-        MapBean mapbean = mapservice.getElementById(-1);
+        MapBean mapbean = mapservice.getElementById("-1");
         assertNull(mapbean);
     }
 }

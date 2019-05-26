@@ -19,7 +19,7 @@ public class MapController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public MapMessage getElementById(@PathVariable int id){
+    public MapMessage getElementById(@PathVariable String id){
         List<MapBean> mapbeans = new ArrayList<>();
         mapbeans.add(mapservice.getElementById(id));
         return new MapMessage(mapbeans);

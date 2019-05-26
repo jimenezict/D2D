@@ -11,7 +11,7 @@ public interface MapService {
 
     public void setMapDataService(MapDataService mapDataService);
 
-    public MapBean getElementById(int i);
+    public MapBean getElementById(String i);
 
     public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage);
 

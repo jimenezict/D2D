@@ -1,6 +1,6 @@
 package com.dataontheroad.d2d.mapservice.repository.mongodb.model;
 
-import com.sun.corba.se.spi.ior.ObjectId;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +10,10 @@ public class FountainMongo {
     @Id
     private ObjectId _id;
     private double[] position;
+
+    public FountainMongo(){
+
+    }
 
     public FountainMongo(ObjectId _id, double[] position) {
         this._id = _id;
@@ -31,6 +35,10 @@ public class FountainMongo {
 
     public void set_id(ObjectId _id) {
         this._id = _id;
+    }
+
+    public ObjectId get_id(){
+        return _id;
     }
 
     public void setPosition(double[] position) {

@@ -2,10 +2,8 @@ package com.dataontheroad.d2d.mapservice.repository.mongodb.model;
 
 import org.springframework.data.annotation.Id;
 import org.bson.types.ObjectId;
-import org.bson.types.BSONTimestamp;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Document

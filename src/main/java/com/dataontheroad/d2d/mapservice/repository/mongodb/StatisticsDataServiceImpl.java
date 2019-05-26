@@ -17,7 +17,8 @@ public class StatisticsDataServiceImpl implements StatisticsDataService {
     @Autowired
     private StatisticsRepository statisticsRepository;
 
-    public void newStatistics(StatisticsBean statitsticsBean){
+    @Override
+    public void insertElement(StatisticsBean statitsticsBean){
         statisticsRepository
                 .save(
                         new StatisticsMongo(
@@ -26,20 +27,24 @@ public class StatisticsDataServiceImpl implements StatisticsDataService {
                                 statitsticsBean.getUsers()));
     }
 
+    @Override
     public StatisticsBean getStatistics(){
         List<StatisticsMongo> statistics = statisticsRepository.findAll();
         if(statistics!= null && statistics.size() == 0){
             return null;
         }
-        List<StatisticsMongo> orderedstatistics = statistics.stream().sorted(Comparator.comparing(StatisticsMongo::getTimestamp).reversed()).collect(Collectors.toList());
+        List<StatisticsMongo> orderedstatistics =
+                statistics.stream().sorted(Comparator.comparing(StatisticsMongo::getTimestamp).reversed()).collect(Collectors.toList());
         return new StatisticsBean(orderedstatistics.get(0).getCountries(),orderedstatistics.get(0).getFountains(),orderedstatistics.get(0).getUsers());
     }
 
+    @Override
     public long countStatistics(){
         return statisticsRepository.count();
     }
 
-    public void emptyStatistics(){
+    @Override
+    public void emptyElements(){
         statisticsRepository.deleteAll();
     }
 
