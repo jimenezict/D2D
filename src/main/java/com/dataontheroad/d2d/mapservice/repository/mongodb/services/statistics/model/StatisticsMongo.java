@@ -1,4 +1,4 @@
-package com.dataontheroad.d2d.mapservice.repository.mongodb.model;
+package com.dataontheroad.d2d.mapservice.repository.mongodb.services.statistics.model;
 
 import org.springframework.data.annotation.Id;
 import org.bson.types.ObjectId;

@@ -1,8 +1,8 @@
 package com.dataontheroad.d2d.mapservice.repository.mongodb;
 
 import com.dataontheroad.d2d.mapservice.repository.StatisticsDataService;
-import com.dataontheroad.d2d.mapservice.repository.mongodb.model.StatisticsMongo;
-import com.dataontheroad.d2d.mapservice.repository.mongodb.repository.StatisticsRepository;
+import com.dataontheroad.d2d.mapservice.repository.mongodb.services.statistics.model.StatisticsMongo;
+import com.dataontheroad.d2d.mapservice.repository.mongodb.services.statistics.StatisticsRepository;
 import com.dataontheroad.d2d.mapservice.services.statistics.StatisticsBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

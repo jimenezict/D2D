@@ -44,6 +44,17 @@ public class FountainRepositoryTests {
 		assertEquals(2, mapBeanList.size());
 	}
 
-
+	@Test
+	public void MongoFountainGetLimitedResultsByLongDistance() {
+		mapDataService.emptyElements();
+		mapDataService.insertElement(new MapBean(0,0));
+		mapDataService.insertElement(new MapBean(1,1));
+		mapDataService.insertElement(new MapBean(2,2));
+		mapDataService.insertElement(new MapBean(3,3));
+		List<MapBean> mapBeanList = mapDataService
+				.getElementsByPositionAndDistance(new RadialMessage(new Position(0,0),100000, 2));
+		mapDataService.emptyElements();
+		assertEquals(2, mapBeanList.size());
+	}
 
 }

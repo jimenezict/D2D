@@ -1,19 +1,17 @@
 package com.dataontheroad.d2d.mapservice.repository.mongodb;
 
 import com.dataontheroad.d2d.mapservice.repository.MapDataService;
-import com.dataontheroad.d2d.mapservice.repository.mongodb.model.FountainMongo;
-import com.dataontheroad.d2d.mapservice.repository.mongodb.repository.FountainRepository;
+import com.dataontheroad.d2d.mapservice.repository.mongodb.services.fountain.model.FountainMongo;
+import com.dataontheroad.d2d.mapservice.repository.mongodb.services.fountain.FountainRepository;
+import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.Position;
 import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.RadialMessage;
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 public class MapDataServiceImpl implements MapDataService {
@@ -29,7 +27,7 @@ public class MapDataServiceImpl implements MapDataService {
 
     @Override
     public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage) {
-        List<FountainMongo> mapBeansList = fountainRepository.findAll();
+        List<FountainMongo> mapBeansList = filterOnTheCircle(radialMessage.meters,radialMessage.position);
         List<MapBean> mapBeanList = mapBeansList
                 .stream()
                 .limit(radialMessage.getResults())
@@ -37,6 +35,13 @@ public class MapDataServiceImpl implements MapDataService {
                 .collect(Collectors.toList());
 
         return mapBeanList;
+    }
+
+    private List<FountainMongo> filterOnTheCircle(int meters, Position position) {
+        if(meters > 0){
+            fountainRepository.filterByCircle(meters,position);
+        }
+        return fountainRepository.findAll();
     }
 
     @Override
