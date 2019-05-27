@@ -3,7 +3,6 @@ package com.dataontheroad.d2d.mapservice.repository.mongodb;
 import com.dataontheroad.d2d.mapservice.repository.MapDataService;
 import com.dataontheroad.d2d.mapservice.repository.mongodb.services.mappoints.model.MapPointMongo;
 import com.dataontheroad.d2d.mapservice.repository.mongodb.services.mappoints.MapPointRepository;
-import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.Position;
 import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.RadialMessage;
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
 import org.bson.types.ObjectId;
@@ -18,11 +17,11 @@ import java.util.stream.Collectors;
 public class MapDataServiceImpl implements MapDataService {
 
     @Autowired
-    MapPointRepository fountainRepository;
+    MapPointRepository mapPointRepository;
 
     @Override
     public MapBean getElementById(String id) {
-        MapPointMongo fountainMongo = fountainRepository.findById(id).orElse(new MapPointMongo(0,0));
+        MapPointMongo fountainMongo = mapPointRepository.findById(id).orElse(new MapPointMongo(0,0));
         return new MapBean(fountainMongo.getPosition().getX(),fountainMongo.getPosition().getY());
     }
 
@@ -41,25 +40,25 @@ public class MapDataServiceImpl implements MapDataService {
 
     private List<MapPointMongo> filterOnTheCircle(int meters, Point point) {
         if(meters > 0){
-            return fountainRepository.filterByCircle(meters,point);
+            return mapPointRepository.filterByCircle(meters,point);
         }
-        return fountainRepository.findAll();
+        return mapPointRepository.findAll();
     }
 
     @Override
     public ObjectId insertElement(MapBean mapBean){
-        MapPointMongo fountainInserted = fountainRepository.save(new MapPointMongo(mapBean.getX_cord(),mapBean.getY_cord()));
+        MapPointMongo fountainInserted = mapPointRepository.save(new MapPointMongo(mapBean.getX_cord(),mapBean.getY_cord()));
         return fountainInserted.get_id();
     }
 
     @Override
     public void emptyElements() {
-        fountainRepository.deleteAll();
+        mapPointRepository.deleteAll();
     }
 
     @Override
     public long countStatistics(){
-        return fountainRepository.count();
+        return mapPointRepository.count();
     }
 
 }

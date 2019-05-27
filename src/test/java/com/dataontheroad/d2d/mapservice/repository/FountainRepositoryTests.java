@@ -22,7 +22,7 @@ public class FountainRepositoryTests {
 	MapDataService mapDataService;
 
 	@Test
-	public void MongoFountainInsertRepositoryTests() {
+	public void MongoMapPointInsertRepositoryTests() {
 		mapDataService.emptyElements();
 		long inisize = mapDataService.countStatistics();
 		ObjectId id = mapDataService.insertElement(new MapBean(0,0));
@@ -32,7 +32,7 @@ public class FountainRepositoryTests {
 	}
 
 	@Test
-	public void MongoFountainGetLimitedResultsByVolume() {
+	public void MongoMapPointGetLimitedResultsByVolume() {
 		mapDataService.emptyElements();
 		mapDataService.insertElement(new MapBean(0,0));
 		mapDataService.insertElement(new MapBean(1,1));
@@ -45,7 +45,7 @@ public class FountainRepositoryTests {
 	}
 
 	@Test
-	public void MongoFountainGetLimitedResultsByLongDistance1() {
+	public void MongoMapPointGetLimitedResultsByLongDistance1() {
 		mapDataService.emptyElements();
 		mapDataService.insertElement(new MapBean(0,0));
 		mapDataService.insertElement(new MapBean(1,1));
@@ -58,7 +58,7 @@ public class FountainRepositoryTests {
 	}
 
 	@Test
-	public void MongoFountainGetLimitedResultsByLongDistance2() {
+	public void MongoMapPointGetLimitedResultsByLongDistance2() {
 		mapDataService.emptyElements();
 		mapDataService.insertElement(new MapBean(0,0));
 		mapDataService.insertElement(new MapBean(1,1));
@@ -71,7 +71,7 @@ public class FountainRepositoryTests {
 	}
 
 	@Test
-	public void MongoFountainGetLimitedResultsByShortDistance1() {
+	public void MongoMapPointGetLimitedResultsByShortDistance1() {
 		mapDataService.emptyElements();
 		mapDataService.insertElement(new MapBean(0,0));
 		mapDataService.insertElement(new MapBean(1,1));
