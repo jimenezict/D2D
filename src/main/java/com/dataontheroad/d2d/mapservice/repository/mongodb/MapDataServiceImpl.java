@@ -8,6 +8,7 @@ import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.Radia
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,8 @@ public class MapDataServiceImpl implements MapDataService {
 
     @Override
     public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage) {
-        List<MapPointMongo> mapBeansList = filterOnTheCircle(radialMessage.meters,radialMessage.position);
+        Point point = new Point(radialMessage.position.getX_cord(), radialMessage.position.getY_cord());
+        List<MapPointMongo> mapBeansList = filterOnTheCircle(radialMessage.meters,point);
         List<MapBean> mapBeanList = mapBeansList
                 .stream()
                 .limit(radialMessage.getResults())
@@ -37,9 +39,9 @@ public class MapDataServiceImpl implements MapDataService {
         return mapBeanList;
     }
 
-    private List<MapPointMongo> filterOnTheCircle(int meters, Position position) {
+    private List<MapPointMongo> filterOnTheCircle(int meters, Point point) {
         if(meters > 0){
-            fountainRepository.filterByCircle(meters,position);
+            return fountainRepository.filterByCircle(meters,point);
         }
         return fountainRepository.findAll();
     }
