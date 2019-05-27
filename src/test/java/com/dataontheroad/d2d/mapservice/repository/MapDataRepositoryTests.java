@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FountainRepositoryTests {
+public class MapDataRepositoryTests {
 
 	@Autowired
 	MapDataService mapDataService;
@@ -39,7 +39,7 @@ public class FountainRepositoryTests {
 		mapDataService.insertElement(new MapBean(2,2));
 		mapDataService.insertElement(new MapBean(3,3));
 		List<MapBean> mapBeanList = mapDataService
-				.getElementsByPositionAndDistance(new RadialMessage(new Position(0,0),0, 2));
+				.getElementsByPositionAndDistance(new RadialMessage(new Position(-1,-1),0, 2));
 		mapDataService.emptyElements();
 		assertEquals(2, mapBeanList.size());
 	}
@@ -52,9 +52,11 @@ public class FountainRepositoryTests {
 		mapDataService.insertElement(new MapBean(2,2));
 		mapDataService.insertElement(new MapBean(3,3));
 		List<MapBean> mapBeanList = mapDataService
-				.getElementsByPositionAndDistance(new RadialMessage(new Position(0,0),100000, 2));
+				.getElementsByPositionAndDistance(new RadialMessage(new Position(-1,-1),100000000, 2));
 		mapDataService.emptyElements();
 		assertEquals(2, mapBeanList.size());
+		assertEquals(0, mapBeanList.get(0).getX_cord(),0.1);
+		assertEquals(1, mapBeanList.get(1).getX_cord(),0.1);
 	}
 
 	@Test
@@ -65,9 +67,11 @@ public class FountainRepositoryTests {
 		mapDataService.insertElement(new MapBean(2,2));
 		mapDataService.insertElement(new MapBean(3,3));
 		List<MapBean> mapBeanList = mapDataService
-				.getElementsByPositionAndDistance(new RadialMessage(new Position(0,0),100000, 4));
+				.getElementsByPositionAndDistance(new RadialMessage(new Position(-1,-1),100000000, 4));
 		mapDataService.emptyElements();
 		assertEquals(4, mapBeanList.size());
+		assertEquals(0, mapBeanList.get(0).getX_cord(),0.1);
+		assertEquals(3, mapBeanList.get(3).getX_cord(),0.1);
 	}
 
 	@Test
@@ -78,7 +82,7 @@ public class FountainRepositoryTests {
 		mapDataService.insertElement(new MapBean(2,2));
 		mapDataService.insertElement(new MapBean(3,3));
 		List<MapBean> mapBeanList = mapDataService
-				.getElementsByPositionAndDistance(new RadialMessage(new Position(0,0),1, 4));
+				.getElementsByPositionAndDistance(new RadialMessage(new Position(-1,-1),1, 4));
 		mapDataService.emptyElements();
 		assertEquals(0, mapBeanList.size());
 	}

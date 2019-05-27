@@ -2,14 +2,14 @@ package com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest;
 
 public class RadialMessage{
 
-    public Position position;
-    public int meters;
-    public int results;
+    private Position position;
+    private int meters;
+    private int numResults;
 
     public RadialMessage(Position position, int meters, int results) {
         this.position = position;
         this.meters = meters;
-        this.results = results;
+        this.numResults = results;
     }
 
     public Position getPosition() {
@@ -20,8 +20,8 @@ public class RadialMessage{
         return meters;
     }
 
-    public int getResults() {
-        return results;
+    public int getNumResults() {
+        return numResults;
     }
 
 }

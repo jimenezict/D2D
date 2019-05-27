@@ -27,20 +27,20 @@ public class MapDataServiceImpl implements MapDataService {
 
     @Override
     public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage) {
-        Point point = new Point(radialMessage.position.getX_cord(), radialMessage.position.getY_cord());
-        List<MapPointMongo> mapBeansList = filterOnTheCircle(radialMessage.meters,point);
+
+        List<MapPointMongo> mapBeansList = filterOnTheCircle(radialMessage);
         List<MapBean> mapBeanList = mapBeansList
                 .stream()
-                .limit(radialMessage.getResults())
-                .map(x -> new MapBean(radialMessage.getPosition().getX_cord(),radialMessage.getPosition().getY_cord()))
+                .limit(radialMessage.getNumResults())
+                .map(x -> new MapBean(x.getPosition().getX(),x.getPosition().getY()))
                 .collect(Collectors.toList());
 
         return mapBeanList;
     }
 
-    private List<MapPointMongo> filterOnTheCircle(int meters, Point point) {
-        if(meters > 0){
-            return mapPointRepository.filterByCircle(meters,point);
+    private List<MapPointMongo> filterOnTheCircle(RadialMessage radialMessage) {
+        if(radialMessage.getMeters() > 0){
+            return mapPointRepository.filterByCircle(radialMessage);
         }
         return mapPointRepository.findAll();
     }
