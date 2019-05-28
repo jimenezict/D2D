@@ -3,12 +3,12 @@ package com.dataontheroad.d2d.mapservice.services.statistics;
 public class StatisticsBean {
 
     private int countries;
-    private int fountains;
+    private int items;
     private int users;
 
-    public StatisticsBean(int countries, int fountains, int users) {
+    public StatisticsBean(int countries, int items, int users) {
         this.countries = countries;
-        this.fountains = fountains;
+        this.items = items;
         this.users = users;
     }
 
@@ -16,8 +16,8 @@ public class StatisticsBean {
         return countries;
     }
 
-    public int getFountains() {
-        return fountains;
+    public int getItems() {
+        return items;
     }
 
     public int getUsers() {

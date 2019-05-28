@@ -23,7 +23,7 @@ public class StatisticsDataServiceImpl implements StatisticsDataService {
                 .save(
                         new StatisticsMongo(
                                 statitsticsBean.getCountries(),
-                                statitsticsBean.getFountains(),
+                                statitsticsBean.getItems(),
                                 statitsticsBean.getUsers()));
     }
 

@@ -1,6 +1,8 @@
 package com.dataontheroad.d2d.mapservice.restcontroller;
 
 import com.dataontheroad.d2d.mapservice.restcontroller.message.MapMessage;
+import com.dataontheroad.d2d.mapservice.restcontroller.message.Message;
+import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.Position;
 import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.RadialMessage;
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
 import com.dataontheroad.d2d.mapservice.services.map.MapService;
@@ -31,4 +33,15 @@ public class MapController {
         return new MapMessage(mapbeans);
     }
 
+    @PostMapping("/addElement")
+    public Message saveNewlements(@RequestBody Position position) {
+        return resultMessage(mapservice.saveNewlements(position));
+    }
+
+    private Message resultMessage(boolean result){
+        if(result){
+            return new Message("Point created");
+        }
+        return new Message("Point not created");
+    }
 }

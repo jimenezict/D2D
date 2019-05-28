@@ -9,7 +9,7 @@ public class MapMessage extends Message {
     private List<MapBean> mapBeans;
 
     public MapMessage(List<MapBean> mapBeans){
-        super("Map Fountains");
+        super("Map Beans");
         this.mapBeans = mapBeans;
     }
 

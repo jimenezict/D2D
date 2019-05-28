@@ -2,7 +2,7 @@ package com.dataontheroad.d2d.mapservice.restcontroller.message;
 
 import java.time.LocalDateTime;
 
-public abstract class Message {
+public class Message {
 
     protected String type;
     protected LocalDateTime dateTime;
