@@ -30,11 +30,10 @@ public class CustomizedMapPointRepositoryImpl implements CustomizedMapPointRepos
     }
 
     private GeoResults<MapPointMongo> getMapPointsByDistance(RadialMessage radialMessage) {
-        Point point = getPoint(radialMessage);
-        Distance distance = getDistance(radialMessage);
-
         return mongoTemplate
-                .geoNear(NearQuery.near(point).maxDistance(distance).num(radialMessage.getNumResults() + 1),
+                .geoNear(NearQuery.near(getPoint(radialMessage))
+                                .maxDistance(getDistance(radialMessage))
+                                .num(radialMessage.getNumResults()),
                 MapPointMongo.class, "MapPoints");
     }
 

@@ -1,19 +1,20 @@
 package com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest;
 
 public class Position {
-    private double x_cord;
-    private double y_cord;
+    private Double x_cord;
+    private Double y_cord;
 
-    public Position(double x_cord, double y_cord) {
+    public Position(Double x_cord, Double y_cord) {
         this.x_cord = x_cord;
         this.y_cord = y_cord;
     }
 
-    public double getX_cord() {
+    public Double getX_cord() {
         return x_cord;
     }
 
-    public double getY_cord() {
+
+    public Double getY_cord() {
         return y_cord;
     }
 }
