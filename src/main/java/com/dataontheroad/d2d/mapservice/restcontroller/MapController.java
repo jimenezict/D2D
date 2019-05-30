@@ -29,8 +29,7 @@ public class MapController {
 
     @PostMapping("/radial")
     public MapMessage getElementsByPositionAndDistance(@RequestBody RadialMessage radialMessage) {
-        List<MapBean> mapbeans = mapservice.getElementsByPositionAndDistance(radialMessage);
-        return new MapMessage(mapbeans);
+        return new MapMessage(mapservice.getElementsByPositionAndDistance(radialMessage));
     }
 
     @PostMapping("/addElement")
@@ -39,9 +38,6 @@ public class MapController {
     }
 
     private Message resultMessage(boolean result){
-        if(result){
-            return new Message("Point created");
-        }
-        return new Message("Point not created");
+        return (result)?new Message("Point created"):new Message("Point not created");
     }
 }
