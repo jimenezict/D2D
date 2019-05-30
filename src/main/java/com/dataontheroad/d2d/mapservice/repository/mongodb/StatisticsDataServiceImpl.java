@@ -35,7 +35,7 @@ public class StatisticsDataServiceImpl implements StatisticsDataService {
         }
         List<StatisticsMongo> orderedstatistics =
                 statistics.stream().sorted(Comparator.comparing(StatisticsMongo::getTimestamp).reversed()).collect(Collectors.toList());
-        return new StatisticsBean(orderedstatistics.get(0).getCountries(),orderedstatistics.get(0).getFountains(),orderedstatistics.get(0).getUsers());
+        return new StatisticsBean(orderedstatistics.get(0).getCountries(),orderedstatistics.get(0).getMapBeans(),orderedstatistics.get(0).getUsers());
     }
 
     @Override

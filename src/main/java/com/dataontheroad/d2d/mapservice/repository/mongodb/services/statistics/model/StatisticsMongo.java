@@ -12,7 +12,7 @@ public class StatisticsMongo {
     @Id
     private ObjectId _id;
     private int countries;
-    private int fountains;
+    private int mapBeans;
     private int users;
     private LocalDateTime timestamp;
 
@@ -20,26 +20,26 @@ public class StatisticsMongo {
 
     }
 
-    public StatisticsMongo(ObjectId _id, int countries, int fountains, int users, LocalDateTime timestamp) {
+    public StatisticsMongo(ObjectId _id, int countries, int mapBeans, int users, LocalDateTime timestamp) {
         this._id = _id;
         this.countries = countries;
-        this.fountains = fountains;
+        this.mapBeans = mapBeans;
         this.users = users;
         this.timestamp = timestamp;
     }
 
-    public StatisticsMongo(ObjectId _id, int countries, int fountains, int users ) {
+    public StatisticsMongo(ObjectId _id, int countries, int mapBeans, int users ) {
         this._id = _id;
         this.countries = countries;
-        this.fountains = fountains;
+        this.mapBeans = mapBeans;
         this.users = users;
         this.timestamp = LocalDateTime.now();
     }
 
-    public StatisticsMongo(int countries, int fountains, int users ) {
+    public StatisticsMongo(int countries, int mapBeans, int users ) {
         this._id = ObjectId.get();
         this.countries = countries;
-        this.fountains = fountains;
+        this.mapBeans = mapBeans;
         this.users = users;
         this.timestamp = LocalDateTime.now();
     }
@@ -48,8 +48,8 @@ public class StatisticsMongo {
         return countries;
     }
 
-    public int getFountains() {
-        return fountains;
+    public int getMapBeans() {
+        return mapBeans;
     }
 
     public int getUsers() {
@@ -62,8 +62,8 @@ public class StatisticsMongo {
         this.countries = countries;
     }
 
-    public void setFountains(int fountains) {
-        this.fountains = fountains;
+    public void setMapBeans(int mapBeans) {
+        this.mapBeans = mapBeans;
     }
 
     public void setUsers(int users) {
