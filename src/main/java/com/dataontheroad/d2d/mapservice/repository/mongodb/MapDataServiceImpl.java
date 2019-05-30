@@ -7,7 +7,6 @@ import com.dataontheroad.d2d.mapservice.restcontroller.message.PostRequest.Radia
 import com.dataontheroad.d2d.mapservice.services.map.MapBean;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,34 +20,29 @@ public class MapDataServiceImpl implements MapDataService {
 
     @Override
     public MapBean getElementById(String id) {
-        MapPointMongo fountainMongo = mapPointRepository.findById(id).orElse(new MapPointMongo(0,0));
-        return new MapBean(fountainMongo.getPosition().getX(),fountainMongo.getPosition().getY());
+        MapPointMongo mapPointMongo = mapPointRepository.findById(id).orElse(new MapPointMongo(0,0));
+        return new MapBean(mapPointMongo.getPosition().getX(),mapPointMongo.getPosition().getY());
     }
 
     @Override
     public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage) {
 
-        List<MapPointMongo> mapBeansList = filterOnTheCircle(radialMessage);
-        List<MapBean> mapBeanList = mapBeansList
+        return filterOnTheCircle(radialMessage)
                 .stream()
                 .limit(radialMessage.getNumResults())
                 .map(x -> new MapBean(x.getPosition().getX(),x.getPosition().getY()))
                 .collect(Collectors.toList());
 
-        return mapBeanList;
     }
 
     private List<MapPointMongo> filterOnTheCircle(RadialMessage radialMessage) {
-        if(radialMessage.getMeters() > 0){
-            return mapPointRepository.filterByCircle(radialMessage);
-        }
-        return mapPointRepository.findAll();
+        return (radialMessage.getMeters() > 0)? mapPointRepository.filterByCircle(radialMessage):mapPointRepository.findAll();
     }
 
     @Override
     public ObjectId insertElement(MapBean mapBean){
-        MapPointMongo fountainInserted = mapPointRepository.save(new MapPointMongo(mapBean.getX_cord(),mapBean.getY_cord()));
-        return fountainInserted.get_id();
+        MapPointMongo mapPointMongo = mapPointRepository.save(new MapPointMongo(mapBean.getX_cord(),mapBean.getY_cord()));
+        return mapPointMongo.get_id();
     }
 
     @Override
