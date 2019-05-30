@@ -28,12 +28,12 @@ public class MapController {
     }
 
     @PostMapping("/radial")
-    public MapMessage getElementsByPositionAndDistance(@RequestBody RadialMessage radialMessage) {
+    public MapMessage getElementsByPositionAndDistance(RadialMessage radialMessage) {
         return new MapMessage(mapservice.getElementsByPositionAndDistance(radialMessage));
     }
 
     @PostMapping("/addElement")
-    public Message saveNewlements(@RequestBody Position position) {
+    public Message saveNewlements(Position position) {
         return resultMessage(mapservice.saveNewlements(position));
     }
 
