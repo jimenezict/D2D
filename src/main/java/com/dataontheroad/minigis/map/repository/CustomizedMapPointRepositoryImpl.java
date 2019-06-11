@@ -1,7 +1,7 @@
-package com.dataontheroad.minigis.repository.mongodb.services.mappoints;
+package com.dataontheroad.minigis.map.repository;
 
-import com.dataontheroad.minigis.repository.mongodb.services.mappoints.model.MapPointMongo;
-import com.dataontheroad.minigis.restcontroller.message.PostRequest.RadialMessage;
+import com.dataontheroad.minigis.map.repository.model.MapPointMongo;
+import com.dataontheroad.minigis.map.message.RadialRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.*;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -16,7 +16,7 @@ public class CustomizedMapPointRepositoryImpl implements CustomizedMapPointRepos
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public List<MapPointMongo> filterByCircle(RadialMessage radialMessage) {
+    public List<MapPointMongo> filterByCircle(RadialRequest radialMessage) {
         return convertMapPointsToList(getMapPointsByDistance(radialMessage));
     }
 
@@ -29,7 +29,7 @@ public class CustomizedMapPointRepositoryImpl implements CustomizedMapPointRepos
                 .collect(Collectors.toList());
     }
 
-    private GeoResults<MapPointMongo> getMapPointsByDistance(RadialMessage radialMessage) {
+    private GeoResults<MapPointMongo> getMapPointsByDistance(RadialRequest radialMessage) {
         return mongoTemplate
                 .geoNear(NearQuery.near(getPoint(radialMessage))
                                 .maxDistance(getDistance(radialMessage))
@@ -38,12 +38,12 @@ public class CustomizedMapPointRepositoryImpl implements CustomizedMapPointRepos
     }
 
     @NotNull
-    private Distance getDistance(RadialMessage radialMessage) {
+    private Distance getDistance(RadialRequest radialMessage) {
         return new Distance(radialMessage.getMeters() / 1000, Metrics.KILOMETERS);
     }
 
     @NotNull
-    private Point getPoint(RadialMessage radialMessage) {
+    private Point getPoint(RadialRequest radialMessage) {
         return new Point(radialMessage.getPosition().getX_cord(), radialMessage.getPosition().getY_cord());
     }
 

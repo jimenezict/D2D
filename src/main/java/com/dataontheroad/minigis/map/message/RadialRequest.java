@@ -1,12 +1,12 @@
-package com.dataontheroad.minigis.restcontroller.message.PostRequest;
+package com.dataontheroad.minigis.map.message;
 
-public class RadialMessage{
+public class RadialRequest {
 
     private Position position;
     private int meters;
     private int numResults;
 
-    public RadialMessage(Position position, int meters, int results) {
+    public RadialRequest(Position position, int meters, int results) {
         this.position = position;
         this.meters = meters;
         this.numResults = results;

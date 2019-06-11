@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.repository.mongodb.services.mappoints.model;
+package com.dataontheroad.minigis.map.repository.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;

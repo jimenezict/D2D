@@ -1,10 +1,8 @@
-package com.dataontheroad.minigis.repository.mongodb;
+package com.dataontheroad.minigis.map.repository;
 
-import com.dataontheroad.minigis.repository.MapDataService;
-import com.dataontheroad.minigis.repository.mongodb.services.mappoints.model.MapPointMongo;
-import com.dataontheroad.minigis.repository.mongodb.services.mappoints.MapPointRepository;
-import com.dataontheroad.minigis.restcontroller.message.PostRequest.RadialMessage;
-import com.dataontheroad.minigis.services.map.MapBean;
+import com.dataontheroad.minigis.map.repository.model.MapPointMongo;
+import com.dataontheroad.minigis.map.message.RadialRequest;
+import com.dataontheroad.minigis.map.service.model.MapDTO;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,28 +17,28 @@ public class MapDataServiceImpl implements MapDataService {
     MapPointRepository mapPointRepository;
 
     @Override
-    public MapBean getElementById(String id) {
+    public MapDTO getElementById(String id) {
         MapPointMongo mapPointMongo = mapPointRepository.findById(id).orElse(new MapPointMongo(0,0));
-        return new MapBean(mapPointMongo.getPosition().getX(),mapPointMongo.getPosition().getY());
+        return new MapDTO(mapPointMongo.getPosition().getX(),mapPointMongo.getPosition().getY());
     }
 
     @Override
-    public List<MapBean> getElementsByPositionAndDistance(RadialMessage radialMessage) {
+    public List<MapDTO> getElementsByPositionAndDistance(RadialRequest radialMessage) {
 
         return filterOnTheCircle(radialMessage)
                 .stream()
                 .limit(radialMessage.getNumResults())
-                .map(x -> new MapBean(x.getPosition().getX(),x.getPosition().getY()))
+                .map(x -> new MapDTO(x.getPosition().getX(),x.getPosition().getY()))
                 .collect(Collectors.toList());
 
     }
 
-    private List<MapPointMongo> filterOnTheCircle(RadialMessage radialMessage) {
+    private List<MapPointMongo> filterOnTheCircle(RadialRequest radialMessage) {
         return (radialMessage.getMeters() > 0)? mapPointRepository.filterByCircle(radialMessage):mapPointRepository.findAll();
     }
 
     @Override
-    public ObjectId insertElement(MapBean mapBean){
+    public ObjectId insertElement(MapDTO mapBean){
         MapPointMongo mapPointMongo = mapPointRepository.save(new MapPointMongo(mapBean.getX_cord(),mapBean.getY_cord()));
         return mapPointMongo.get_id();
     }

@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.restcontroller.message.PostRequest;
+package com.dataontheroad.minigis.map.message;
 
 public class Position {
     private Double x_cord;

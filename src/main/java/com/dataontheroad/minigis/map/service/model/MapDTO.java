@@ -1,11 +1,11 @@
-package com.dataontheroad.minigis.services.map;
+package com.dataontheroad.minigis.map.service.model;
 
-public class MapBean {
+public class MapDTO {
 
     private double x_cord;
     private double y_cord;
 
-    public MapBean(double x_cord, double y_cord) {
+    public MapDTO(double x_cord, double y_cord) {
         this.x_cord = x_cord;
         this.y_cord = y_cord;
     }
