@@ -1,6 +1,6 @@
 package com.dataontheroad.minigis.statistics;
 
-import com.dataontheroad.minigis.statistics.message.StatisticsMessage;
+import com.dataontheroad.minigis.statistics.message.StatisticsResponse;
 import com.dataontheroad.minigis.statistics.service.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ public class StatisticsController {
 
     @GetMapping("/statistics")
     @ResponseBody
-    public StatisticsMessage getStatistics(){
-        return new StatisticsMessage(statistics.getStatistics());
+    public StatisticsResponse getStatistics(){
+        return new StatisticsResponse(statistics.getStatistics());
     }
 }
