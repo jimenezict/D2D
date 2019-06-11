@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 @Document(collection="Statistics")
-public class StatisticsMongo {
+public class StatisticsMongoDTO {
 
     @Id
     private ObjectId _id;
@@ -16,11 +16,11 @@ public class StatisticsMongo {
     private int users;
     private LocalDateTime timestamp;
 
-    public StatisticsMongo(){
+    public StatisticsMongoDTO(){
 
     }
 
-    public StatisticsMongo(ObjectId _id, int countries, int mapBeans, int users, LocalDateTime timestamp) {
+    public StatisticsMongoDTO(ObjectId _id, int countries, int mapBeans, int users, LocalDateTime timestamp) {
         this._id = _id;
         this.countries = countries;
         this.mapBeans = mapBeans;
@@ -28,7 +28,7 @@ public class StatisticsMongo {
         this.timestamp = timestamp;
     }
 
-    public StatisticsMongo(ObjectId _id, int countries, int mapBeans, int users ) {
+    public StatisticsMongoDTO(ObjectId _id, int countries, int mapBeans, int users ) {
         this._id = _id;
         this.countries = countries;
         this.mapBeans = mapBeans;
@@ -36,7 +36,7 @@ public class StatisticsMongo {
         this.timestamp = LocalDateTime.now();
     }
 
-    public StatisticsMongo(int countries, int mapBeans, int users ) {
+    public StatisticsMongoDTO(int countries, int mapBeans, int users ) {
         this._id = ObjectId.get();
         this.countries = countries;
         this.mapBeans = mapBeans;

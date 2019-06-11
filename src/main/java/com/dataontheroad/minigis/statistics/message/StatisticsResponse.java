@@ -1,18 +1,18 @@
 package com.dataontheroad.minigis.statistics.message;
 
 import com.dataontheroad.minigis.common.BaseMessage;
-import com.dataontheroad.minigis.statistics.service.StatisticsBean;
+import com.dataontheroad.minigis.statistics.service.model.StatisticsDTO;
 
 public class StatisticsResponse extends BaseMessage {
 
-    private StatisticsBean statistics;
+    private StatisticsDTO statistics;
 
-    public StatisticsResponse(StatisticsBean statistics){
+    public StatisticsResponse(StatisticsDTO statistics){
         super("Statistic");
         this.statistics = statistics;
     }
 
-    public StatisticsBean getStatisticsBean(){
+    public StatisticsDTO getStatisticsBean(){
         return statistics;
     }
 

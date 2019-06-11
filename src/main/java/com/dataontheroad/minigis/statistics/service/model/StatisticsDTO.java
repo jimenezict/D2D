@@ -1,12 +1,12 @@
-package com.dataontheroad.minigis.statistics.service;
+package com.dataontheroad.minigis.statistics.service.model;
 
-public class StatisticsBean {
+public class StatisticsDTO {
 
     private int countries;
     private int items;
     private int users;
 
-    public StatisticsBean(int countries, int items, int users) {
+    public StatisticsDTO(int countries, int items, int users) {
         this.countries = countries;
         this.items = items;
         this.users = users;

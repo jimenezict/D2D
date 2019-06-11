@@ -1,7 +1,7 @@
 package com.dataontheroad.minigis.statistics.repository;
 
-import com.dataontheroad.minigis.statistics.repository.model.StatisticsMongo;
-import com.dataontheroad.minigis.statistics.service.StatisticsBean;
+import com.dataontheroad.minigis.statistics.repository.model.StatisticsMongoDTO;
+import com.dataontheroad.minigis.statistics.service.model.StatisticsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,24 +16,24 @@ public class StatisticsDataServiceImpl implements StatisticsDataService {
     private StatisticsRepository statisticsRepository;
 
     @Override
-    public void insertElement(StatisticsBean statitsticsBean){
+    public void insertElement(StatisticsDTO statitsticsBean){
         statisticsRepository
                 .save(
-                        new StatisticsMongo(
+                        new StatisticsMongoDTO(
                                 statitsticsBean.getCountries(),
                                 statitsticsBean.getItems(),
                                 statitsticsBean.getUsers()));
     }
 
     @Override
-    public StatisticsBean getStatistics(){
-        List<StatisticsMongo> statistics = statisticsRepository.findAll();
+    public StatisticsDTO getStatistics(){
+        List<StatisticsMongoDTO> statistics = statisticsRepository.findAll();
         if(statistics!= null && statistics.size() == 0){
             return null;
         }
-        List<StatisticsMongo> orderedstatistics =
-                statistics.stream().sorted(Comparator.comparing(StatisticsMongo::getTimestamp).reversed()).collect(Collectors.toList());
-        return new StatisticsBean(orderedstatistics.get(0).getCountries(),orderedstatistics.get(0).getMapBeans(),orderedstatistics.get(0).getUsers());
+        List<StatisticsMongoDTO> orderedstatistics =
+                statistics.stream().sorted(Comparator.comparing(StatisticsMongoDTO::getTimestamp).reversed()).collect(Collectors.toList());
+        return new StatisticsDTO(orderedstatistics.get(0).getCountries(),orderedstatistics.get(0).getMapBeans(),orderedstatistics.get(0).getUsers());
     }
 
     @Override

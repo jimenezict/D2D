@@ -1,14 +1,14 @@
 package com.dataontheroad.minigis.statistics.repository;
 
 import com.dataontheroad.minigis.common.BaseDataService;
-import com.dataontheroad.minigis.statistics.service.StatisticsBean;
+import com.dataontheroad.minigis.statistics.service.model.StatisticsDTO;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface StatisticsDataService extends BaseDataService {
 
-    StatisticsBean getStatistics();
+    StatisticsDTO getStatistics();
 
-    public void insertElement(StatisticsBean statitsticsBean);
+    public void insertElement(StatisticsDTO statitsticsBean);
 
 }
