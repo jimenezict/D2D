@@ -1,7 +1,7 @@
 package com.dataontheroad.minigis.map.repository.service;
 
 import com.dataontheroad.minigis.map.repository.MapPointRepository;
-import com.dataontheroad.minigis.map.repository.model.MapPointMongo;
+import com.dataontheroad.minigis.map.repository.model.MapPointMongoDTO;
 import com.dataontheroad.minigis.map.message.RadialRequest;
 import com.dataontheroad.minigis.map.service.model.MapDTO;
 import org.bson.types.ObjectId;
@@ -19,7 +19,7 @@ public class MapDataServiceImpl implements MapDataService {
 
     @Override
     public MapDTO getElementById(String id) {
-        MapPointMongo mapPointMongo = mapPointRepository.findById(id).orElse(new MapPointMongo(0,0));
+        MapPointMongoDTO mapPointMongo = mapPointRepository.findById(id).orElse(new MapPointMongoDTO(0,0));
         return new MapDTO(mapPointMongo.getPosition().getX(),mapPointMongo.getPosition().getY());
     }
 
@@ -34,13 +34,13 @@ public class MapDataServiceImpl implements MapDataService {
 
     }
 
-    private List<MapPointMongo> filterOnTheCircle(RadialRequest radialMessage) {
+    private List<MapPointMongoDTO> filterOnTheCircle(RadialRequest radialMessage) {
         return (radialMessage.getMeters() > 0)? mapPointRepository.filterByCircle(radialMessage):mapPointRepository.findAll();
     }
 
     @Override
     public ObjectId insertElement(MapDTO mapBean){
-        MapPointMongo mapPointMongo = mapPointRepository.save(new MapPointMongo(mapBean.getX_cord(),mapBean.getY_cord()));
+        MapPointMongoDTO mapPointMongo = mapPointRepository.save(new MapPointMongoDTO(mapBean.getX_cord(),mapBean.getY_cord()));
         return mapPointMongo.get_id();
     }
 

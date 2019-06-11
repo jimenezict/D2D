@@ -6,26 +6,26 @@ import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="MapPoints")
-public class MapPointMongo {
+public class MapPointMongoDTO {
 
     @Id
     private ObjectId _id;
     private Point position;
 
-    public MapPointMongo(){
+    public MapPointMongoDTO(){
 
     }
 
-    public MapPointMongo(ObjectId _id, Point position) {
+    public MapPointMongoDTO(ObjectId _id, Point position) {
         this._id = _id;
         this.position = position;
     }
 
-    public MapPointMongo(double x, double y) {
+    public MapPointMongoDTO(double x, double y) {
         this.position = new Point(x,y);
     }
 
-    public MapPointMongo(ObjectId _id, double x, double y) {
+    public MapPointMongoDTO(ObjectId _id, double x, double y) {
         this._id = _id;
         this.position = new Point(x,y);
     }

@@ -1,6 +1,6 @@
 package com.dataontheroad.minigis.map.repository;
 
-import com.dataontheroad.minigis.map.repository.model.MapPointMongo;
+import com.dataontheroad.minigis.map.repository.model.MapPointMongoDTO;
 import com.dataontheroad.minigis.map.message.RadialRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.*;
@@ -16,12 +16,12 @@ public class CustomizedMapPointRepositoryImpl implements CustomizedMapPointRepos
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public List<MapPointMongo> filterByCircle(RadialRequest radialMessage) {
+    public List<MapPointMongoDTO> filterByCircle(RadialRequest radialMessage) {
         return convertMapPointsToList(getMapPointsByDistance(radialMessage));
     }
 
     @NotNull
-    private List<MapPointMongo> convertMapPointsToList(GeoResults<MapPointMongo> geoMapPointMongo) {
+    private List<MapPointMongoDTO> convertMapPointsToList(GeoResults<MapPointMongoDTO> geoMapPointMongo) {
         return geoMapPointMongo
                 .getContent()
                 .stream()
@@ -29,12 +29,12 @@ public class CustomizedMapPointRepositoryImpl implements CustomizedMapPointRepos
                 .collect(Collectors.toList());
     }
 
-    private GeoResults<MapPointMongo> getMapPointsByDistance(RadialRequest radialMessage) {
+    private GeoResults<MapPointMongoDTO> getMapPointsByDistance(RadialRequest radialMessage) {
         return mongoTemplate
                 .geoNear(NearQuery.near(getPoint(radialMessage))
                                 .maxDistance(getDistance(radialMessage))
                                 .num(radialMessage.getNumResults()),
-                MapPointMongo.class, "MapPoints");
+                MapPointMongoDTO.class, "MapPoints");
     }
 
     @NotNull
