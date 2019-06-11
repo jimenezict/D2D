@@ -1,6 +1,6 @@
-package com.dataontheroad.minigis.services.statistics;
+package com.dataontheroad.minigis.statistics.service;
 
-import com.dataontheroad.minigis.repository.StatisticsDataService;
+import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;
 import org.springframework.stereotype.Service;
 
 @Service

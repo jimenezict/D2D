@@ -1,9 +1,9 @@
 package com.dataontheroad.minigis.service.statistics;
 
-import com.dataontheroad.minigis.repository.StatisticsDataService;
-import com.dataontheroad.minigis.restcontroller.message.StatisticsMessage;
-import com.dataontheroad.minigis.services.statistics.Statistics;
-import com.dataontheroad.minigis.services.statistics.StatisticsBean;
+import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;
+import com.dataontheroad.minigis.statistics.message.StatisticsMessage;
+import com.dataontheroad.minigis.statistics.service.Statistics;
+import com.dataontheroad.minigis.statistics.service.StatisticsBean;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

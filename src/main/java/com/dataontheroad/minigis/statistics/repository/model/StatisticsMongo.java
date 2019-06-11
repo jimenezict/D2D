@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.repository.mongodb.services.statistics.model;
+package com.dataontheroad.minigis.statistics.repository.model;
 
 import org.springframework.data.annotation.Id;
 import org.bson.types.ObjectId;

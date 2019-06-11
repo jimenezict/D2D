@@ -1,7 +1,7 @@
-package com.dataontheroad.minigis.restcontroller.message;
+package com.dataontheroad.minigis.statistics.message;
 
 import com.dataontheroad.minigis.common.BaseMessage;
-import com.dataontheroad.minigis.services.statistics.StatisticsBean;
+import com.dataontheroad.minigis.statistics.service.StatisticsBean;
 
 public class StatisticsMessage extends BaseMessage {
 

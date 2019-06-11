@@ -1,9 +1,7 @@
-package com.dataontheroad.minigis.repository.mongodb;
+package com.dataontheroad.minigis.statistics.repository;
 
-import com.dataontheroad.minigis.repository.StatisticsDataService;
-import com.dataontheroad.minigis.repository.mongodb.services.statistics.model.StatisticsMongo;
-import com.dataontheroad.minigis.repository.mongodb.services.statistics.StatisticsRepository;
-import com.dataontheroad.minigis.services.statistics.StatisticsBean;
+import com.dataontheroad.minigis.statistics.repository.model.StatisticsMongo;
+import com.dataontheroad.minigis.statistics.service.StatisticsBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

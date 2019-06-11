@@ -1,6 +1,7 @@
 package com.dataontheroad.minigis.repository;
 
-import com.dataontheroad.minigis.services.statistics.StatisticsBean;
+import com.dataontheroad.minigis.statistics.service.StatisticsBean;
+import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +16,7 @@ import static org.junit.Assert.*;
 public class StatisticsRepositoryTests {
 
 	@Autowired
-	StatisticsDataService statisticsDataService;
+    StatisticsDataService statisticsDataService;
 
 	@Test
 	public void MongoStatisticsInsertRepositoryTests() {

@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.services.statistics;
+package com.dataontheroad.minigis.statistics.service;
 
 public class StatisticsBean {
 

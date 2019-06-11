@@ -1,7 +1,7 @@
-package com.dataontheroad.minigis.restcontroller;
+package com.dataontheroad.minigis.statistics;
 
-import com.dataontheroad.minigis.restcontroller.message.StatisticsMessage;
-import com.dataontheroad.minigis.services.statistics.Statistics;
+import com.dataontheroad.minigis.statistics.message.StatisticsMessage;
+import com.dataontheroad.minigis.statistics.service.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
