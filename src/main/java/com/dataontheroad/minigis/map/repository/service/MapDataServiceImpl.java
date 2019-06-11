@@ -3,7 +3,7 @@ package com.dataontheroad.minigis.map.repository.service;
 import com.dataontheroad.minigis.map.repository.MapPointRepository;
 import com.dataontheroad.minigis.map.repository.model.MapPointMongoDTO;
 import com.dataontheroad.minigis.map.message.RadialRequest;
-import com.dataontheroad.minigis.map.service.model.MapDTO;
+import com.dataontheroad.minigis.map.service.model.MapPointDTO;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,18 +18,18 @@ public class MapDataServiceImpl implements MapDataService {
     MapPointRepository mapPointRepository;
 
     @Override
-    public MapDTO getElementById(String id) {
+    public MapPointDTO getElementById(String id) {
         MapPointMongoDTO mapPointMongo = mapPointRepository.findById(id).orElse(new MapPointMongoDTO(0,0));
-        return new MapDTO(mapPointMongo.getPosition().getX(),mapPointMongo.getPosition().getY());
+        return new MapPointDTO(mapPointMongo.getPosition().getX(),mapPointMongo.getPosition().getY());
     }
 
     @Override
-    public List<MapDTO> getElementsByPositionAndDistance(RadialRequest radialMessage) {
+    public List<MapPointDTO> getElementsByPositionAndDistance(RadialRequest radialMessage) {
 
         return filterOnTheCircle(radialMessage)
                 .stream()
                 .limit(radialMessage.getNumResults())
-                .map(x -> new MapDTO(x.getPosition().getX(),x.getPosition().getY()))
+                .map(x -> new MapPointDTO(x.getPosition().getX(),x.getPosition().getY()))
                 .collect(Collectors.toList());
 
     }
@@ -39,7 +39,7 @@ public class MapDataServiceImpl implements MapDataService {
     }
 
     @Override
-    public ObjectId insertElement(MapDTO mapBean){
+    public ObjectId insertElement(MapPointDTO mapBean){
         MapPointMongoDTO mapPointMongo = mapPointRepository.save(new MapPointMongoDTO(mapBean.getX_cord(),mapBean.getY_cord()));
         return mapPointMongo.get_id();
     }

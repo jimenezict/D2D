@@ -1,6 +1,6 @@
 package com.dataontheroad.minigis.map.service;
 
-import com.dataontheroad.minigis.map.service.model.MapDTO;
+import com.dataontheroad.minigis.map.service.model.MapPointDTO;
 import com.dataontheroad.minigis.map.repository.service.MapDataService;
 import com.dataontheroad.minigis.map.message.Position;
 import com.dataontheroad.minigis.map.message.RadialRequest;
@@ -13,9 +13,9 @@ public interface MapService {
 
     public void setMapDataService(MapDataService mapDataService);
 
-    public MapDTO getElementById(String i);
+    public MapPointDTO getElementById(String i);
 
-    public List<MapDTO> getElementsByPositionAndDistance(RadialRequest radialMessage);
+    public List<MapPointDTO> getElementsByPositionAndDistance(RadialRequest radialMessage);
 
     public Boolean saveNewlements(Position position);
 

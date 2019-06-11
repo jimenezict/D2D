@@ -1,6 +1,6 @@
 package com.dataontheroad.minigis.map.service;
 
-import com.dataontheroad.minigis.map.service.model.MapDTO;
+import com.dataontheroad.minigis.map.service.model.MapPointDTO;
 import com.dataontheroad.minigis.map.repository.service.MapDataService;
 import com.dataontheroad.minigis.map.message.Position;
 import com.dataontheroad.minigis.map.message.RadialRequest;
@@ -22,18 +22,18 @@ public class MapServiceImpl implements MapService{
     }
 
     @Override
-    public MapDTO getElementById(String i) {
+    public MapPointDTO getElementById(String i) {
         return mapDataService.getElementById(i);
     }
 
     @Override
-    public List<MapDTO> getElementsByPositionAndDistance(RadialRequest radialMessage) {
+    public List<MapPointDTO> getElementsByPositionAndDistance(RadialRequest radialMessage) {
         return mapDataService.getElementsByPositionAndDistance(radialMessage);
     }
 
     @Override
     public Boolean saveNewlements(Position position) {
-        ObjectId result = mapDataService.insertElement(new MapDTO(position.getX_cord(),position.getY_cord()));
+        ObjectId result = mapDataService.insertElement(new MapPointDTO(position.getX_cord(),position.getY_cord()));
         return (result==null)?false:true;
     }
 }

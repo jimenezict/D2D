@@ -1,20 +1,20 @@
 package com.dataontheroad.minigis.map.message;
 
 import com.dataontheroad.minigis.common.BaseMessage;
-import com.dataontheroad.minigis.map.service.model.MapDTO;
+import com.dataontheroad.minigis.map.service.model.MapPointDTO;
 
 import java.util.List;
 
 public class MapResponse extends BaseMessage {
 
-    private List<MapDTO> mapBeans;
+    private List<MapPointDTO> mapBeans;
 
-    public MapResponse(List<MapDTO> mapBeans){
+    public MapResponse(List<MapPointDTO> mapBeans){
         super("Map Beans");
         this.mapBeans = mapBeans;
     }
 
-    public List<MapDTO> getMapBean(){
+    public List<MapPointDTO> getMapBean(){
         return mapBeans;
     }
 
