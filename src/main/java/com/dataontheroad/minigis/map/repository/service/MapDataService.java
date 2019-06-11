@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.map.repository;
+package com.dataontheroad.minigis.map.repository.service;
 
 import com.dataontheroad.minigis.common.BaseDataService;
 import com.dataontheroad.minigis.map.message.RadialRequest;

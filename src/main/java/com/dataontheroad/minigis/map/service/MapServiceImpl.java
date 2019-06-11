@@ -1,7 +1,7 @@
 package com.dataontheroad.minigis.map.service;
 
 import com.dataontheroad.minigis.map.service.model.MapDTO;
-import com.dataontheroad.minigis.map.repository.MapDataService;
+import com.dataontheroad.minigis.map.repository.service.MapDataService;
 import com.dataontheroad.minigis.map.message.Position;
 import com.dataontheroad.minigis.map.message.RadialRequest;
 import org.bson.types.ObjectId;

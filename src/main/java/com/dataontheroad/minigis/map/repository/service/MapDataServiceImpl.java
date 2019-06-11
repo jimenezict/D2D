@@ -1,5 +1,6 @@
-package com.dataontheroad.minigis.map.repository;
+package com.dataontheroad.minigis.map.repository.service;
 
+import com.dataontheroad.minigis.map.repository.MapPointRepository;
 import com.dataontheroad.minigis.map.repository.model.MapPointMongo;
 import com.dataontheroad.minigis.map.message.RadialRequest;
 import com.dataontheroad.minigis.map.service.model.MapDTO;
