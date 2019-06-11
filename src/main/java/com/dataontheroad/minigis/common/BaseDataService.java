@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.repository;
+package com.dataontheroad.minigis.common;
 
 public interface BaseDataService {
 

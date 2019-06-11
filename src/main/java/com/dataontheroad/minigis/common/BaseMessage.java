@@ -1,13 +1,13 @@
-package com.dataontheroad.minigis.restcontroller.message;
+package com.dataontheroad.minigis.common;
 
 import java.time.LocalDateTime;
 
-public class Message {
+public class BaseMessage {
 
     protected String type;
     protected LocalDateTime dateTime;
 
-    public Message(String type){
+    public BaseMessage(String type){
         this.type = type;
     }
 

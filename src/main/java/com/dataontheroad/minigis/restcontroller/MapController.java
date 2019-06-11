@@ -1,7 +1,7 @@
 package com.dataontheroad.minigis.restcontroller;
 
 import com.dataontheroad.minigis.restcontroller.message.MapMessage;
-import com.dataontheroad.minigis.restcontroller.message.Message;
+import com.dataontheroad.minigis.common.BaseMessage;
 import com.dataontheroad.minigis.restcontroller.message.PostRequest.Position;
 import com.dataontheroad.minigis.restcontroller.message.PostRequest.RadialMessage;
 import com.dataontheroad.minigis.services.map.MapBean;
@@ -33,11 +33,11 @@ public class MapController {
     }
 
     @PostMapping("/addElement")
-    public Message saveNewlements(@RequestBody Position position) {
+    public BaseMessage saveNewlements(@RequestBody Position position) {
         return resultMessage(mapservice.saveNewlements(position));
     }
 
-    private Message resultMessage(boolean result){
-        return (result)?new Message("Point created"):new Message("Point not created");
+    private BaseMessage resultMessage(boolean result){
+        return (result)?new BaseMessage("Point created"):new BaseMessage("Point not created");
     }
 }
