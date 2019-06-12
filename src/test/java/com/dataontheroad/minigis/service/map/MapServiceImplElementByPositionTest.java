@@ -1,10 +1,10 @@
 package com.dataontheroad.minigis.service.map;
 
-import com.dataontheroad.minigis.repository.MapDataService;
-import com.dataontheroad.minigis.restcontroller.message.PostRequest.Position;
-import com.dataontheroad.minigis.restcontroller.message.PostRequest.RadialMessage;
-import com.dataontheroad.minigis.services.map.MapBean;
-import com.dataontheroad.minigis.services.map.MapService;
+import com.dataontheroad.minigis.map.message.Position;
+import com.dataontheroad.minigis.map.message.RadialRequest;
+import com.dataontheroad.minigis.map.repository.service.MapDataService;
+import com.dataontheroad.minigis.map.service.model.MapPointDTO;
+import com.dataontheroad.minigis.map.service.MapService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,8 +35,8 @@ public class MapServiceImplElementByPositionTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        List<MapBean> listMapBean = new ArrayList<>();
-        listMapBean.add(new MapBean(2.3,2.3));
+        List<MapPointDTO> listMapBean = new ArrayList<>();
+        listMapBean.add(new MapPointDTO(2.3,2.3));
 
         when(mapDataService.getElementsByPositionAndDistance(any())).thenReturn(listMapBean);
         mapservice.setMapDataService(mapDataService);
@@ -44,8 +44,8 @@ public class MapServiceImplElementByPositionTest {
 
     @Test
     public void getElementById() {
-        RadialMessage radialMessage = new RadialMessage(new Position(2.3,2.3), 10, 10);
-        List<MapBean> mapbean = mapservice.getElementsByPositionAndDistance(radialMessage);
+        RadialRequest radialMessage = new RadialRequest(new Position(2.3,2.3), 10, 10);
+        List<MapPointDTO> mapbean = mapservice.getElementsByPositionAndDistance(radialMessage);
         assertEquals(1,mapbean.size());
     }
 

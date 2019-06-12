@@ -1,8 +1,8 @@
 package com.dataontheroad.minigis.service.map;
 
-import com.dataontheroad.minigis.services.map.MapBean;
-import com.dataontheroad.minigis.services.map.MapService;
-import com.dataontheroad.minigis.repository.MapDataService;
+import com.dataontheroad.minigis.map.repository.service.MapDataService;
+import com.dataontheroad.minigis.map.service.model.MapPointDTO;
+import com.dataontheroad.minigis.map.service.MapService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,20 +29,20 @@ public class MapServiceImplGetByIdTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        when(mapDataService.getElementById("0")).thenReturn(new MapBean(0,0));
+        when(mapDataService.getElementById("0")).thenReturn(new MapPointDTO(0,0));
         when(mapDataService.getElementById("-1")).thenReturn(null);
         mapservice.setMapDataService(mapDataService);
     }
 
     @Test
     public void getElementById() {
-        MapBean mapbean = mapservice.getElementById("0");
+        MapPointDTO mapbean = mapservice.getElementById("0");
         assertEquals(0,mapbean.getX_cord(),0.1);
     }
 
     @Test
     public void getNullElementById() {
-        MapBean mapbean = mapservice.getElementById("-1");
+        MapPointDTO mapbean = mapservice.getElementById("-1");
         assertNull(mapbean);
     }
 }

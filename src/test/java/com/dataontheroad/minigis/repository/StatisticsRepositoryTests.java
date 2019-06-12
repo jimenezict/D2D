@@ -1,6 +1,6 @@
 package com.dataontheroad.minigis.repository;
 
-import com.dataontheroad.minigis.statistics.service.StatisticsBean;
+import com.dataontheroad.minigis.statistics.service.model.StatisticsDTO;
 import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class StatisticsRepositoryTests {
 	public void MongoStatisticsInsertRepositoryTests() {
 		statisticsDataService.emptyElements();
 		long inisize = statisticsDataService.countStatistics();
-		statisticsDataService.insertElement(new StatisticsBean(1,5,1));
+		statisticsDataService.insertElement(new StatisticsDTO(1,5,1));
 		long endsize = statisticsDataService.countStatistics();
 		statisticsDataService.emptyElements();
 		assertEquals(inisize + 1, endsize);
@@ -37,13 +37,13 @@ public class StatisticsRepositoryTests {
 	@Test
 	public void MongoStatisticsGetRepositoryTests() {
 		statisticsDataService.emptyElements();
-		statisticsDataService.insertElement(new StatisticsBean(1,50,1));
-		statisticsDataService.insertElement(new StatisticsBean(2,500,10));
-		statisticsDataService.insertElement(new StatisticsBean(3,5000,100));
-		statisticsDataService.insertElement(new StatisticsBean(4,50000,1000));
-		statisticsDataService.insertElement(new StatisticsBean(5,500000,10000));
-		statisticsDataService.insertElement(new StatisticsBean(6,5000000,100000));
-		statisticsDataService.insertElement(new StatisticsBean(7,50000000,1000000));
+		statisticsDataService.insertElement(new StatisticsDTO(1,50,1));
+		statisticsDataService.insertElement(new StatisticsDTO(2,500,10));
+		statisticsDataService.insertElement(new StatisticsDTO(3,5000,100));
+		statisticsDataService.insertElement(new StatisticsDTO(4,50000,1000));
+		statisticsDataService.insertElement(new StatisticsDTO(5,500000,10000));
+		statisticsDataService.insertElement(new StatisticsDTO(6,5000000,100000));
+		statisticsDataService.insertElement(new StatisticsDTO(7,50000000,1000000));
 
 		Assert.assertEquals(7,statisticsDataService.getStatistics().getCountries());
 

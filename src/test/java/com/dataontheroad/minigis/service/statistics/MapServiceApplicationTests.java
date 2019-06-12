@@ -1,9 +1,9 @@
 package com.dataontheroad.minigis.service.statistics;
 
 import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;
-import com.dataontheroad.minigis.statistics.message.StatisticsMessage;
+import com.dataontheroad.minigis.statistics.message.StatisticsResponse;
 import com.dataontheroad.minigis.statistics.service.Statistics;
-import com.dataontheroad.minigis.statistics.service.StatisticsBean;
+import com.dataontheroad.minigis.statistics.service.model.StatisticsDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +31,7 @@ public class MapServiceApplicationTests {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 
-		when(statisticsDataService.getStatistics()).thenReturn(new StatisticsBean(3,300,5));
+		when(statisticsDataService.getStatistics()).thenReturn(new StatisticsDTO(3,300,5));
 		statistics.setStatisticsDataService(statisticsDataService);
 	}
 
@@ -42,7 +42,7 @@ public class MapServiceApplicationTests {
 
 	@Test
 	public void StatisticsMessage() {
-		StatisticsMessage sm = new StatisticsMessage(statistics.getStatistics());
+		StatisticsResponse sm = new StatisticsResponse(statistics.getStatistics());
 		assertEquals("Statistic",sm.getType());
 	}
 }

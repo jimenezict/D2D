@@ -1,7 +1,7 @@
 package com.dataontheroad.minigis.service.statistics;
 
 import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;
-import com.dataontheroad.minigis.statistics.message.StatisticsMessage;
+import com.dataontheroad.minigis.statistics.message.StatisticsResponse;
 import com.dataontheroad.minigis.statistics.service.Statistics;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +42,7 @@ public class MapServiceApplicationNullTests {
 
 	@Test
 	public void StatisticsMessage() {
-		StatisticsMessage sm = new StatisticsMessage(statistics.getStatistics());
+		StatisticsResponse sm = new StatisticsResponse(statistics.getStatistics());
 		assertEquals("Statistic",sm.getType());
 	}
 }
