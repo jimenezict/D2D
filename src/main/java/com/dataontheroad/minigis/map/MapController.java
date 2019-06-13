@@ -34,7 +34,7 @@ public class MapController {
 
     @PostMapping("/addElement")
     public BaseMessage saveNewlements(@RequestBody Position position) {
-        return resultMessage(mapservice.saveNewlements(position));
+        return resultMessage(mapservice.saveNewPosition(position));
     }
 
     private BaseMessage resultMessage(boolean result){

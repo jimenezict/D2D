@@ -32,7 +32,7 @@ public class MapServiceImpl implements MapService{
     }
 
     @Override
-    public Boolean saveNewlements(Position position) {
+    public Boolean saveNewPosition(Position position) {
         ObjectId result = mapDataService.insertElement(new MapPointDTO(position.getX_cord(),position.getY_cord()));
         return (result==null)?false:true;
     }
