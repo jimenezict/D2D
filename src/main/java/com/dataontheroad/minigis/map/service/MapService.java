@@ -17,6 +17,6 @@ public interface MapService {
 
     public List<MapPointDTO> getElementsByPositionAndDistance(RadialRequest radialMessage);
 
-    public Boolean saveNewlements(Position position);
+    public Boolean saveNewPosition(Position position);
 
 }

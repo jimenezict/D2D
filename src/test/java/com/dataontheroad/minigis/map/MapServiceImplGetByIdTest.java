@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.service.map;
+package com.dataontheroad.minigis.map;
 
 import com.dataontheroad.minigis.map.repository.service.MapDataService;
 import com.dataontheroad.minigis.map.service.model.MapPointDTO;
@@ -26,7 +26,7 @@ public class MapServiceImplGetByIdTest {
     MapDataService mapDataService;
 
     @Before
-    public void setUp() throws Exception {
+    public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
 
         when(mapDataService.getElementById("0")).thenReturn(new MapPointDTO(0,0));

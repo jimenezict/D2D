@@ -1,9 +1,8 @@
-package com.dataontheroad.minigis.service.statistics;
+package com.dataontheroad.minigis.statistics;
 
 import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;
 import com.dataontheroad.minigis.statistics.message.StatisticsResponse;
 import com.dataontheroad.minigis.statistics.service.Statistics;
-import com.dataontheroad.minigis.statistics.service.model.StatisticsDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,12 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MapServiceApplicationTests {
+public class StatisticsApplicationNullTests {
 
 	@Autowired
     Statistics statistics;
@@ -28,16 +28,16 @@ public class MapServiceApplicationTests {
 
 
 	@Before
-	public void setUp() throws Exception {
+	public void init() throws Exception {
 		MockitoAnnotations.initMocks(this);
 
-		when(statisticsDataService.getStatistics()).thenReturn(new StatisticsDTO(3,300,5));
+		when(statisticsDataService.getStatistics()).thenReturn(null);
 		statistics.setStatisticsDataService(statisticsDataService);
 	}
 
 	@Test
 	public void StatisticsImpl() {
-		assertEquals(3,statistics.getStatistics().getCountries());
+		assertEquals(0,statistics.getStatistics().getCountries());
 	}
 
 	@Test
