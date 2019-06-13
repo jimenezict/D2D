@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.repository;
+package com.dataontheroad.minigis.statistics;
 
 import com.dataontheroad.minigis.statistics.service.model.StatisticsDTO;
 import com.dataontheroad.minigis.statistics.repository.StatisticsDataService;

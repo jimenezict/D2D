@@ -1,4 +1,4 @@
-package com.dataontheroad.minigis.service.map;
+package com.dataontheroad.minigis.map;
 
 import com.dataontheroad.minigis.map.repository.service.MapDataService;
 import com.dataontheroad.minigis.map.service.model.MapPointDTO;
