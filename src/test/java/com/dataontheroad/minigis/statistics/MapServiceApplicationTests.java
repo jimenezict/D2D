@@ -28,7 +28,7 @@ public class MapServiceApplicationTests {
 
 
 	@Before
-	public void setUp() throws Exception {
+	public void init() throws Exception {
 		MockitoAnnotations.initMocks(this);
 
 		when(statisticsDataService.getStatistics()).thenReturn(new StatisticsDTO(3,300,5));

@@ -28,7 +28,7 @@ public class MapServiceApplicationNullTests {
 
 
 	@Before
-	public void setUp() throws Exception {
+	public void init() throws Exception {
 		MockitoAnnotations.initMocks(this);
 
 		when(statisticsDataService.getStatistics()).thenReturn(null);

@@ -26,7 +26,7 @@ public class MapServiceImplGetByIdTest {
     MapDataService mapDataService;
 
     @Before
-    public void setUp() throws Exception {
+    public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
 
         when(mapDataService.getElementById("0")).thenReturn(new MapPointDTO(0,0));

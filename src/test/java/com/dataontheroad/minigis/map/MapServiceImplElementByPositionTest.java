@@ -32,7 +32,7 @@ public class MapServiceImplElementByPositionTest {
     MapDataService mapDataService;
 
     @Before
-    public void setUp() throws Exception {
+    public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
 
         List<MapPointDTO> listMapBean = new ArrayList<>();
