@@ -21,11 +21,10 @@ import static org.mockito.Mockito.when;
 public class StatisticsApplicationNullTests {
 
 	@Autowired
-    Statistics statistics;
+	Statistics statistics;
 
 	@Mock
-    StatisticsDataService statisticsDataService;
-
+	StatisticsDataService statisticsDataService;
 
 	@Before
 	public void init() throws Exception {
